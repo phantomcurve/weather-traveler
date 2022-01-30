@@ -1,4 +1,15 @@
-# Getting Started with Create React App
+# Weather Traveler
+
+Simple React-based web app for living vicariously through the weather conditions in far-flung locations.
+
+## Created By:
+
+  _Tim Roth_
+
+## Project Activity Log
+
+1/29: Basic research: pre-build mental mapping and design ( 1 hour )
+1/30: Project scaffolding and continued basic research ( 1 hour )
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
