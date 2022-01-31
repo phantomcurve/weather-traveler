@@ -8,8 +8,9 @@ Simple React-based web app for living vicariously through the weather conditions
 
 ## Project Activity Log
 
-1/29: Basic research: pre-build mental mapping and design ( 1 hour )
-1/30: Project scaffolding and continued basic research ( 1 hour )
+* 1/29: Basic research: pre-build mental mapping and design ( 1 hour )
+* 1/30: 8 AM–9 AM Project scaffolding and continued basic research ( 1 hour )
+* 1/30: 6 PM-8 PM More research on APIs, building UI features and basic project scaffolding continued (sorry, forgot to commit at the beginning of this work session because I was so excited to dive in ;) )
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
