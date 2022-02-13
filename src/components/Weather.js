@@ -1,55 +1,17 @@
 import React from 'react';
+import './Styles.css';
+import { Card } from 'semantic-ui-react'
 
-class Weather extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      error: null,
-      isLoaded: false,
-      weather: []
-    };
-  }
-  makeApiCall = () => {
-    fetch(`api-key=${process.env.REACT_APP_API_KEY}`)
-      .then(response => response.json())
-      .then(
-        (jsonifiedResponse) => {
-          this.setState({
-            isLoaded: true,
-            //weatherHere: jsonifiedResponse.results
-          });
-        })
-        .catch((error) => {
-          this.setState({
-            isLoaded: true,
-            error
-          });
-        });
-  }
-  render() {
-    const { error, isLoaded, weather } = this.state;
-    if (error) {
-      return <React.Fragment>Error: {error.message}</React.Fragment>;
-    } else if (!isLoaded) {
-      return <React.Fragment>Loading...</React.Fragment>;
-    } else {
-      return (
-        <React.Fragment>
-          <h1>Headlines</h1>
-          <ul>
-            {weather.map((weather, index) =>
-              <li key={index}>
-                <h3>{weather.current}</h3>
-                <p>{weather.forecast}</p>
-              </li>
-            )}
-          </ul>
-        </React.Fragment>
-      );
-    }
-  }
-}
+const CardExampleCard = ({weatherData}) => (
+  <Card>
+    <Card.Content>
+        <Card.Header className="header">City Name: {weatherData.name}</Card.Header>
+        <p>Temperature: {weatherData.main.temp}</p>
+        <p>Sunrise: {weatherData.sys.sunrise}</p>
+        <p>Sunset: {weatherData.sys.sunset}</p>
+        <p>Description: {weatherData.weather[0].description}</p>
+    </Card.Content>
+  </Card>
+)
 
-export default Weather;
-
-
+export default CardExampleCard;
