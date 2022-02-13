@@ -29,3 +29,13 @@
     font-family: 'Recursive', sans-serif;
     font-size: 18px;
 }
+
+.flex{
+  display: flex;
+  justify-content: space-between;
+}
+
+.button{
+  width: 35px;
+  height: 35px;
+}
