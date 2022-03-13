@@ -1,4 +1,6 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
+import { Dimmer, Loader } from 'semantic-ui-react';
+import WeatherCard from "components/WeatherCard";
 import PropTypes from 'prop-types'
 import { useHistory } from 'react-router-dom'
 import { doc, deleteDoc } from 'firebase/firestore'
@@ -15,11 +17,31 @@ import { makeStyles } from '@mui/material/styles'
 import { LIST_PATH } from 'constants/paths'
 import { useNotifications } from 'modules/notification'
 
-function CityTile({ name, cityId, createdAt, showDelete }) {
+function CityTile({ name, cityId, date, sky, sunrise, sunset, showDelete }) {
+  const [lat, setLat] = useState([]);
+  const [long, setLong] = useState([]);
+  const [data, setData] = useState([]);
   const theme = useTheme()
   const history = useHistory()
   const { showError, showSuccess } = useNotifications()
   const firestore = useFirestore()
+
+  useEffect(() => {
+    const fetchData = async () => {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        setLat(position.coords.latitude);
+        setLong(position.coords.longitude);
+      });
+
+      await fetch(`${process.env.REACT_APP_API_URL}/weather/?lat=${lat}&lon=${long}&units=imperial&APPID=${process.env.REACT_APP_API_KEY}`)
+      .then(res => res.json())
+      .then(result => {
+        setData(result)
+        console.log(result);
+      });
+    }
+    fetchData();
+  }, [lat,long])
 
   function goToCity() {
     return history.push(`${LIST_PATH}/${cityId}`)
@@ -37,6 +59,7 @@ function CityTile({ name, cityId, createdAt, showDelete }) {
   }
 
   return (
+    
     <Card role="listitem" sx={{ minWidth: 300, minHeight: 200, margin: theme.spacing(0.5) }}>
       <CardHeader
         action={
@@ -58,7 +81,11 @@ function CityTile({ name, cityId, createdAt, showDelete }) {
 CityTile.propTypes = {
   cityId: PropTypes.string.isRequired,
   showDelete: PropTypes.bool,
-  name: PropTypes.string
+  name: PropTypes.string,
+  date: PropTypes.string,
+  sky: PropTypes.string,
+  sunrise: PropTypes.string,
+  sunset: PropTypes.string
 }
 
 CityTile.defaultProps = {

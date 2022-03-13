@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Tenor+Sans&display=swap');
+
+.main{
+    width: 700px;
+    border-radius: 15px;
+    background-color: #5c9bcc;
+}
+
+.header{
+    background-color: #c99ba3;
+    color: whitesmoke;
+    padding: 10px;
+    font-size: 28px;
+    border-radius: 15px;
+    font-family: 'Tenor Sans', sans-serif;
+}
+
+.day{
+    padding: 15px;
+    color: whitesmoke;
+    font-family: 'Tenor Sans', sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.conditions{
+    padding: 15px;
+    color: whitesmoke;
+    font-family: 'Tenor Sans', sans-serif;
+    font-size: 18px;
+}
+
+.flex{
+  display: flex;
+  justify-content: space-between;
+}
+
+.button{
+  width: 35px;
+  height: 35px;
+}
