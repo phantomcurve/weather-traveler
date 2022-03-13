@@ -1,0 +1,7 @@
+{
+  "projects": {
+    "default": "weather-traveler",
+    "main": "weather-traveler",
+    "prod": "weather-traveler"
+  }
+}
